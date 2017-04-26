@@ -1,0 +1,15 @@
+node('master') {
+   
+   stage('initial')
+   {
+        git changelog: false, url: 'https://github.com/vinayrshanbhag/jenkins-examples.git';
+       
+   }
+   stage('Build') {
+       sh './mvnw install'
+      }
+      stage('ARCHIEVE') {
+      
+      archiveArtifacts '**/*.war'
+   }
+}
